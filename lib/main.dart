@@ -14,6 +14,7 @@ class MyListaAvanzada extends StatefulWidget {
 class _MyListaAvanzadaState extends State<MyListaAvanzada> {
   TextEditingController myController = TextEditingController();
   List<String> tareas = [];
+  String mensaje = "";
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +33,26 @@ class _MyListaAvanzadaState extends State<MyListaAvanzada> {
                   controller: myController,
                   decoration: InputDecoration(border: OutlineInputBorder()),
                 ),
-                SizedBox(height: 30),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: Text(mensaje),
+                ),
                 ElevatedButton(
                   onPressed: () {
-                    if (myController.text.isNotEmpty) {
-                      setState(() {
+                    setState(() {
+                      if (myController.text.isEmpty) {
+                        mensaje = "Añade una tarea, campos vacios";
+                      } else if (tareas.contains(myController.text)) {
+                        mensaje = "Esa tarea ya esta en la lista";
+                      } else {
+                        mensaje = "";
                         tareas.add(myController.text);
                         myController.clear();
-                      });
-                    }
+                      }
+                    });
                   },
+
                   child: Text("Añadir"),
                 ),
 
