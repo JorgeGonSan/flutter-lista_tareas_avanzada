@@ -76,6 +76,7 @@ class _MyListaAvanzadaState extends State<MyListaAvanzada> {
                             }
                             //Si hay duplicado muestra msg dinamico y no lo añade
                             if (duplicado) {
+                              mensaje = "Tarea duplicada, no es posible añadir";
                               //Si no esta duplicado añade a la lista de tareas
                             } else {
                               mensaje = "";

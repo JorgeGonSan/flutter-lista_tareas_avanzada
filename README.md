@@ -1,17 +1,20 @@
 # lista_tareas_avanzada
 
-A new Flutter project.
+## Objetivo
 
-## Getting Started
+Aprender a manejar listas de objetos, checkboxes, validaciones y botones dinámicos en Flutter.
 
-This project is a starting point for a Flutter application.
+## Funcionalidades
 
-A few resources to get you started if this is your first Flutter project:
+- Añadir tareas con validación de duplicados y campos vacíos
+- Checkbox independiente por tarea
+- Borrar tarea individual
+- Botón "Marcar/Desmarcar todas" con texto dinámico y lógica
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Conceptos aprendidos
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- setState y control de estado
+- Variables locales en build
+- ListView.builder con objetos personalizados
+- Validaciones y mensajes dinámicos
+- Lógica de botones dinámica según estado
