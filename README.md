@@ -18,3 +18,14 @@ Aprender a manejar listas de objetos, checkboxes, validaciones y botones dinámi
 - ListView.builder con objetos personalizados
 - Validaciones y mensajes dinámicos
 - Lógica de botones dinámica según estado
+
+## Capturas
+
+Pantalla principal con tareas añadidas:  
+![Principal](assets/principal.png)
+
+Todas las tareas marcadas, botón "Desmarcar todas":  
+![Todas marcadas](assets/todas_marcadas.png)
+
+Ejemplo de mensaje de error por duplicado:  
+![Error duplicado](assets/error_duplicado.png)
