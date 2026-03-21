@@ -22,10 +22,10 @@ Aprender a manejar listas de objetos, checkboxes, validaciones y botones dinámi
 ## Capturas
 
 Pantalla principal con tareas añadidas:  
-![Principal](assets/principal.png)
+![Principal](assets/principal.PNG)
 
 Todas las tareas marcadas, botón "Desmarcar todas":  
-![Todas marcadas](assets/todas_marcadas.png)
+![Todas marcadas](assets/todas_marcadas.PNG)
 
 Ejemplo de mensaje de error por duplicado:  
-![Error duplicado](assets/error_duplicado.png)
+![Error duplicado](assets/error_duplicado.PNG)
