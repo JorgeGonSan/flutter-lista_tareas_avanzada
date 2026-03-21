@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyListaAvanzada());
 }
+
 //clase que representa los elementos de una tarea.
 class Tarea {
   String descripcion = "";
@@ -25,6 +26,15 @@ class _MyListaAvanzadaState extends State<MyListaAvanzada> {
 
   @override
   Widget build(BuildContext context) {
+    //Logica para Marcar/Desmarcar todas segun estado checbox
+    bool marcadas = true;
+    for (var tarea in tareas) {
+      if (!tarea.isCheck) {
+        marcadas = false;
+        break;
+      }
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -45,34 +55,67 @@ class _MyListaAvanzadaState extends State<MyListaAvanzada> {
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
                   child: Text(mensaje),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      //Si el campo esta vacio muestra msg dinámico
-                      if (myController.text.isEmpty) {
-                        mensaje = "Añade una tarea, campos vacios";
-                      } else {
-                        bool duplicado = false;
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          //Si el campo esta vacio muestra msg dinámico
+                          if (myController.text.isEmpty) {
+                            mensaje = "Añade una tarea, campos vacios";
+                          } else {
+                            bool duplicado = false;
 
-                        for (var tarea in tareas) {
-                          //Sino esta vacio, recorre lista y busca si hay ducplicados
-                          if (tarea.descripcion == myController.text) {
-                            duplicado = true;
-                            break;
+                            for (var tarea in tareas) {
+                              //Sino esta vacio, recorre lista y busca si hay ducplicados
+                              if (tarea.descripcion == myController.text) {
+                                duplicado = true;
+                                break;
+                              }
+                            }
+                            //Si hay duplicado muestra msg dinamico y no lo añade
+                            if (duplicado) {
+                              //Si no esta duplicado añade a la lista de tareas
+                            } else {
+                              mensaje = "";
+                              tareas.add(Tarea(myController.text, false));
+                              myController.clear();
+                            }
                           }
-                        }
-                        //Si hay duplicado muestra msg dinamico y no lo añade
-                        if (duplicado) {
-                          //Si no esta duplicado añade a la lista de tareas
-                        } else {
-                          mensaje = "";
-                          tareas.add(Tarea(myController.text, false));
-                          myController.clear();
-                        }
-                      }
-                    });
-                  },
-                  child: Text("Añadir"),
+                        });
+                      },
+                      child: Text("Añadir"),
+                    ),
+
+                    //Boton marcar/desmarcar
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          bool todasMarcadas = true;
+                          for (var tarea in tareas) {
+                            if (!tarea.isCheck) {
+                              todasMarcadas = false;
+                              break;
+                            }
+                          }
+                          if (todasMarcadas) {
+                            for (var tarea in tareas) {
+                              tarea.isCheck = false;
+                            }
+                          } else {
+                            for (var tarea in tareas) {
+                              tarea.isCheck = true;
+                            }
+                          }
+                        });
+                      },
+
+                      child: Text(
+                        marcadas ? "Desmarcar todas" : "Marcar todas",
+                      ),
+                    ),
+                  ],
                 ),
 
                 Expanded(
@@ -88,6 +131,14 @@ class _MyListaAvanzadaState extends State<MyListaAvanzada> {
                               tareas[index].isCheck = value!;
                             });
                           },
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              tareas.removeAt(index);
+                            });
+                          },
+                          icon: Icon(Icons.delete),
                         ),
                       );
                     },
