@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lista_tareas_avanzada/models/tarea.dart';
 
 void main() {
   runApp(const MyListaAvanzada());
-}
-
-//clase que representa los elementos de una tarea.
-class Tarea {
-  String descripcion = "";
-  bool isCheck = false;
-
-  Tarea(this.descripcion, this.isCheck);
 }
 
 class MyListaAvanzada extends StatefulWidget {
@@ -80,7 +73,7 @@ class _MyListaAvanzadaState extends State<MyListaAvanzada> {
                               //Si no esta duplicado añade a la lista de tareas
                             } else {
                               mensaje = "";
-                              tareas.add(Tarea(myController.text, false));
+                              tareas.add(Tarea(descripcion: myController.text));
                               myController.clear();
                             }
                           }
